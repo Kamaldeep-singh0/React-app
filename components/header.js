@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const Header = ()=>{
@@ -9,7 +10,7 @@ const Header = ()=>{
         <ul >
             <li>  </li>
             <li>Home</li>
-            <li>Offers</li>
+            <li><Link to="/offer" >Offers</Link></li>
             <li>Cart</li>
         </ul>
         <Btn/>

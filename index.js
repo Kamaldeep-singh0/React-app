@@ -1,8 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import Body from "/components/body";
-import Header from "./components/header"
-import { useState } from "react";
+import Header from "./components/header";
+import Offer from "./components/offer";
+import Error from "./components/error"
+import { createBrowserRouter,useRouteError,RouterProvider } from "react-router-dom";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -18,5 +21,17 @@ return (
 );
 }
 
+const appRouter = createBrowserRouter([
+    {
+        path:"/",
+        element:<Page/>,
+        errorElement: <Error/>,
+    },
+    {
+        path:"/offer",
+        element:<Offer/>,
+    },
+])
 
-root.render(<Page/>);
+
+root.render(<RouterProvider router={appRouter}/>);
