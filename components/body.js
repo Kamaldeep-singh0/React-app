@@ -1,6 +1,7 @@
 import { restro } from "../config";
 import React, { useEffect, useState } from "react";
 import Shimmer from "./shimmer";
+import { Link } from "react-router-dom";
 
 function filterfn(searchTxt, restroList){
     return restroList.filter( (restroList)=> restroList.info.name.toLowerCase()?.includes(searchTxt.toLowerCase()));
@@ -9,7 +10,7 @@ function filterfn(searchTxt, restroList){
    async function callApi(setAllRestroList,setRestroList){
       const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.7333148&lng=76.7794179&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
       const json = await data?.json();
-      console.log(data);
+      console.log(json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setRestroList(json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setAllRestroList(json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
    }
@@ -47,7 +48,7 @@ const Body = ()=>{
            <div className="body">
             {
             restroList.map((restaurant)=>{
-                return < Restaurant_card{...restaurant.info}/>
+                return <Link to={"/restaurant/" + restaurant.info.id} >< Restaurant_card{...restaurant.info} key={restaurant.info.id}/></Link>
             }) } 
             </div>)}
 

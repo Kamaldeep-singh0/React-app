@@ -6,6 +6,7 @@ import Offer from "./components/offer";
 import Error from "./components/error"
 import { createBrowserRouter,useRouteError,RouterProvider, Outlet } from "react-router-dom";
 import Cart from "./components/cart";
+import RestaurantMenu from "./components/restaurantMenu"
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -39,6 +40,10 @@ const appRouter = createBrowserRouter([
             {
                 path:"/cart",
                 element:<Cart/>,
+            },
+            {
+               path:"/restaurant/:id",
+               element:<RestaurantMenu/>,
             },
         ]
     },
