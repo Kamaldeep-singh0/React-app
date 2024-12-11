@@ -4,7 +4,8 @@ import Body from "/components/body";
 import Header from "./components/header";
 import Offer from "./components/offer";
 import Error from "./components/error"
-import { createBrowserRouter,useRouteError,RouterProvider } from "react-router-dom";
+import { createBrowserRouter,useRouteError,RouterProvider, Outlet } from "react-router-dom";
+import Cart from "./components/cart";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -15,7 +16,7 @@ const Page = ()=>{
 return (
     <>
     <Header/>
-    <Body/>
+    <Outlet/>
 
     </>
 );
@@ -26,11 +27,22 @@ const appRouter = createBrowserRouter([
         path:"/",
         element:<Page/>,
         errorElement: <Error/>,
+        children: [
+            {
+                path:"/",
+                element:<Body/>,
+            },
+            {
+                path:"/offer",
+                element:<Offer/>,
+            },
+            {
+                path:"/cart",
+                element:<Cart/>,
+            },
+        ]
     },
-    {
-        path:"/offer",
-        element:<Offer/>,
-    },
+ 
 ])
 
 
