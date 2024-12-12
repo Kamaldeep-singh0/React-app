@@ -1,0 +1,68 @@
+.head {
+  background-color: #faebd7;
+  border: 1px solid #000;
+  border-radius: 10px;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 40px;
+  display: flex;
+}
+
+.head > a {
+  margin-right: auto;
+}
+
+.head > a > img {
+  border: 2px solid #000;
+  width: 50px;
+  height: auto;
+}
+
+.head > ul {
+  justify-content: space-between;
+  padding: 0 20px 0 0;
+  list-style: none;
+  display: flex;
+}
+
+.head ul li {
+  padding: 0 20px 0 0;
+  font-size: 18px;
+}
+
+.card {
+  border: 1px solid #000;
+  width: 12vw;
+  height: 400px;
+  margin: 15px 10px;
+}
+
+.body {
+  flex-flow: wrap;
+  display: flex;
+}
+
+.card img {
+  width: 100%;
+}
+
+.shimmer {
+  flex-flow: wrap;
+  height: 300px;
+  display: flex;
+}
+
+.shimmer > div {
+  background: linear-gradient(-45deg, #eee 40%, #fafafa 50%, #eee 60%) 100% 0 / 300%;
+  width: 12vw;
+  height: 400px;
+  margin: 15px 10px;
+  animation: 1s linear infinite shimmer;
+}
+
+@keyframes shimmer {
+  to {
+    background-position-x: 0%;
+  }
+}
+/*# sourceMappingURL=index.2cdaf7bc.css.map */
