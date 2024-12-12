@@ -6,8 +6,6 @@ import Shimmer from "./shimmer";
     const res = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=30.7333148&lng=76.7794179&restaurantId="+ id);
     const data = await res.json();
     const final = Object.values(data);
-    console.log(final);
-    console.log(final[1].cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards[0].card.info);
     setRestaurant(final[1]?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards);
   }
 
