@@ -2,31 +2,18 @@
 import React, { useEffect, useState } from "react";
 import Shimmer from "./shimmer";
 import { Link } from "react-router-dom";
-
-function filterfn(searchTxt, restroList){
-    return restroList.filter( (restroList)=> restroList.info.name.toLowerCase()?.includes(searchTxt.toLowerCase()));
-}
-
-   async function callApi(setAllRestroList,setRestroList){
-      const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.7333148&lng=76.7794179&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
-      const json = await data?.json();
-        setRestroList(json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setAllRestroList(json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-   }
-
+import filterfn from "./utils/helper(body)";
+import useRestroData from "./utils/userRestroData";
+import { IMG_CDN_RESTRO } from "./utils/link";
   
 
 
 const Body = ()=>{
-    let [searchTxt , setSearchTxt] = useState();
-    let [allrestroList,setAllRestroList] = useState([]);
-    let [restroList , setRestroList] = useState([]);
+    let [searchTxt , setSearchTxt] = useState("");
     let [searchBol , setSearchBol] = useState(false);
-
-     useEffect(()=>{
-         callApi(setAllRestroList,setRestroList);
-     },[]);
-
+    const [restroList,setRestroList] = useRestroData();
+     const allRestroList = useRestroData()[0];
+     
     return(  <>
 
 
@@ -36,7 +23,7 @@ const Body = ()=>{
 
 
         <button onClick={()=>{
-           const data = filterfn(searchTxt,allrestroList);
+           const data = filterfn(searchTxt,allRestroList);
             setRestroList(data);
             setSearchBol(true);
           }}>Search</button>
@@ -58,7 +45,7 @@ const Body = ()=>{
 const Restaurant_card = ({name,avgRating,cuisines,cloudinaryImageId})=>{
     return(<>
         <div className="card">
-           <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+cloudinaryImageId} />
+           <img src={IMG_CDN_RESTRO+cloudinaryImageId} />
             <h2>{name}</h2>
             <h3>{cuisines.join(",")}</h3>
             <h3>{avgRating} stars</h3>       
