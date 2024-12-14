@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Body from "./components/body";
 import Header from "./components/header";
@@ -9,6 +9,7 @@ import Cart from "./components/cart";
 import RestaurantMenu from "./components/restaurantMenu"
 import NextCart from "./components/procced_cart"
 import Shimmer from "./components/shimmer";
+import AboutUs from "./components/aboutUs";
 
 const Offer = lazy(()=>{import("./components/offer")});
 
@@ -19,7 +20,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 const Page = ()=>{
 return (
     <>
-    <Header/>
+    <Header />
     <Outlet/>
 
     </>
@@ -54,6 +55,10 @@ const appRouter = createBrowserRouter([
                path:"/restaurant/:id",
                element:<RestaurantMenu/>,
             },
+            {
+                path:"/aboutUs",
+                element:<AboutUs/>,
+             },
         ]
     },
  
