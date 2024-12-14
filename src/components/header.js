@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import { IMG_LOGO } from "./utils/link";
 import useOnline from "./utils/useOnline";
 
+
+
 const Header = ()=>{
 
     return (
       <div className=" flex p-2 m-2 justify-between bg-violet-200 rounded-md shadow-lg">
         <a href="/" ><img className=" size-20 rounded-md hover:shadow-xl " src={IMG_LOGO}/> </a>
+        
         <ul className=" flex place-items-center " >
             {(useOnline())? ( <li className="m-3 p-3 rounded-md bg-red-200" >🟢 Online</li>) :(<li className="m-3 p-3 rounded-md bg-pink-300" >🔴 Offline</li>)}
          

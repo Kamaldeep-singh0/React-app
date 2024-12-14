@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState } from "react";
+import React, { lazy, Suspense, useContext, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Body from "./components/body";
 import Header from "./components/header";
@@ -11,6 +11,9 @@ import NextCart from "./components/procced_cart"
 import Shimmer from "./components/shimmer";
 import AboutUs from "./components/aboutUs";
 
+import Footer from "./components/footer";
+import UserContext from "./components/utils/userContext";
+
 const Offer = lazy(()=>{import("./components/offer")});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -18,12 +21,22 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 
 const Page = ()=>{
+ const [user , setUser]=useState({
+                name:"Kamaldeep Singh",
+                mail:"mail.kamaldeepss@gmail.com",
+        }
+ );
+
+ 
 return (
-    <>
+    <UserContext.Provider value={{ user : user,
+                  setUser : setUser
+    }}>
     <Header />
     <Outlet/>
-
-    </>
+     <Footer />
+     </UserContext.Provider>
+    
 );
 }
 
