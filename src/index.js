@@ -10,9 +10,10 @@ import RestaurantMenu from "./components/restaurantMenu"
 import NextCart from "./components/procced_cart"
 import Shimmer from "./components/shimmer";
 import AboutUs from "./components/aboutUs";
-
+import { Provider } from "react-redux";
 import Footer from "./components/footer";
 import UserContext from "./components/utils/userContext";
+import appStore from "./components/utils/store";
 
 const Offer = lazy(()=>{import("./components/offer")});
 
@@ -28,7 +29,7 @@ const Page = ()=>{
  );
 
  
-return (
+return (  <Provider store={appStore}>
     <UserContext.Provider value={{ user : user,
                   setUser : setUser
     }}>
@@ -36,6 +37,7 @@ return (
     <Outlet/>
      <Footer />
      </UserContext.Provider>
+     </Provider>
     
 );
 }
