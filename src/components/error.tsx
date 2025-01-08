@@ -1,6 +1,6 @@
 
 
-const Error =()=>{
+const Error: React.FC =()=>{
     return (<>
         <div>
             <h2>Sorry we caught Error</h2>

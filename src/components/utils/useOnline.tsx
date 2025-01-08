@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 
-const useOnline = ()=>{
+const useOnline : React.FC = ()=>{
     const [isOnline, setIsOnline]= useState(true);
 
     useEffect(()=>{
-        const handleOffline = () => setIsOnline(false);
-        const handleOnline = () => setIsOnline(true);
+        const handleOffline : ()=> void = () => setIsOnline(false);
+        const handleOnline : ()=> void = () => setIsOnline(true);
       window.addEventListener("offline",handleOffline);
       window.addEventListener("online",handleOnline);
 

@@ -1,4 +1,4 @@
-function filterfn(searchTxt, restroList){
+function filterfn(searchTxt : string, restroList: any[]){
     if (searchTxt===""){
         return restroList;
     }

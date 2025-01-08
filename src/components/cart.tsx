@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 // class component
 
-const Cart = ()=>{
+const Cart: React.FC = ()=>{
     const cartItem = useSelector((store)=>store.cart.items);
        return (<>
            <div className="flex justify-center m-4 text-2xl">Cart</div>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-const AboutUs =()=>{
+const AboutUs: React.FC =()=>{
         const [current,setCurrent] = useState("")
       return (  <div>
               <Section name={"About us"} 
@@ -22,7 +22,14 @@ const AboutUs =()=>{
             );
 } 
 
-const Section = ({name,description,isVisible ,setIsVisible})=>{
+interface SectinProps {
+  name : string ;
+  description : string;
+  isVisible : boolean;
+  setIsVisible : (section : string)=> void
+}
+
+const Section : React.FC<SectinProps> = ({name , description , isVisible , setIsVisible })=>{
   return ( <div className="m-2 p-2 bg-orange-200"> 
      <div className="p-2 text-xl font-bold border-black">{name}</div>
       { isVisible ? ( <>
